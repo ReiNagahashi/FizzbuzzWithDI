@@ -14,7 +14,7 @@ type MockOutputObject struct{
 	mock.Mock
 }
 
-func (o *MockOutputObject) write(data string){
+func (o *MockOutputObject) Write(data string){
 	o.Called(data)
 } 
 

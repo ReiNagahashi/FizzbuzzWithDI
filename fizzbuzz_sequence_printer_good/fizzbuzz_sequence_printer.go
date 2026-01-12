@@ -19,7 +19,7 @@ type NumberConverter interface{
 // これによりモックを使って「Writeメソッドが "Fizz" という引数で呼ばれたか？」
 // を確認するだけで済む!
 type OutputInterface interface{
-	write(data string )
+	Write(data string )
 }
 
 // ①インターフェースをメンバ変数と持つことで、別パッケージの変更による影響を防ぐ
@@ -37,6 +37,6 @@ func (p *FizzBuzzSequencePrinter) PrintRange(begin, end int) {
 	for i := begin; i <= end; i++{
 		text := p.fizzBuzz.Convert(i)
 		formattedText := fmt.Sprintf("%d %s\n", i, text)
-		p.output.write(formattedText)
+		p.output.Write(formattedText)
 	}
 }
