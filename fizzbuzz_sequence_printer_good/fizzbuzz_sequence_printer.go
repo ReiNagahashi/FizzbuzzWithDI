@@ -2,6 +2,7 @@ package fizzbuzzsequenceprintergood
 
 import (
 	"fmt"
+	"tdd/core"
 )
 
 // 😄詳細への結合を避け、固有のロジックとそのための設計だけを残した実装
@@ -24,18 +25,18 @@ type OutputInterface interface{
 
 // ①インターフェースをメンバ変数と持つことで、別パッケージの変更による影響を防ぐ
 type FizzBuzzSequencePrinter struct{
-	fizzBuzz NumberConverter
+	converter *core.NumberConverter
 	output OutputInterface
 }
 
-func NewFizzBuzzSequencePrinter(converter NumberConverter, output OutputInterface) *FizzBuzzSequencePrinter{
-	return &FizzBuzzSequencePrinter{fizzBuzz: converter, output: output}
-}
+// func NewFizzBuzzSequencePrinter(converter NumberConverter, output OutputInterface) *FizzBuzzSequencePrinter{
+// 	return &FizzBuzzSequencePrinter{converter: converter, output: output}
+// }
 
 func (p *FizzBuzzSequencePrinter) PrintRange(begin, end int) {
 	
 	for i := begin; i <= end; i++{
-		text := p.fizzBuzz.Convert(i)
+		text := p.converter.Convert(i)
 		formattedText := fmt.Sprintf("%d %s\n", i, text)
 		p.output.Write(formattedText)
 	}

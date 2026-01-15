@@ -10,7 +10,7 @@ type NumberConverter struct{
 }
 
 func NewNumberConverter(rules []ReplaceRuler)*NumberConverter{
-	return &NumberConverter{rules}
+	return &NumberConverter{Rules: rules}
 }
 
 
@@ -18,7 +18,7 @@ func (c *NumberConverter) Convert(n int)string{
 	carry := ""
 	for _, rule := range c.Rules{
 		if rule.Match(carry, n){
-			carry += rule.Apply(carry, n)
+			carry = rule.Apply(carry, n)
 		}
 	}
 

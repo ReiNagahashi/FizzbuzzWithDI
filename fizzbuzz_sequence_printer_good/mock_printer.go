@@ -78,7 +78,7 @@ func (m *MockOutputInterface) EXPECT() *MockOutputInterfaceMockRecorder {
 }
 
 // write mocks base method.
-func (m *MockOutputInterface) Write(data string) {
+func (m *MockOutputInterface) write(data string) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "write", data)
 }
@@ -86,5 +86,5 @@ func (m *MockOutputInterface) Write(data string) {
 // write indicates an expected call of write.
 func (mr *MockOutputInterfaceMockRecorder) write(data any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "write", reflect.TypeOf((*MockOutputInterface)(nil).Write), data)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "write", reflect.TypeOf((*MockOutputInterface)(nil).write), data)
 }

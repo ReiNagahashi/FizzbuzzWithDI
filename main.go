@@ -1,13 +1,15 @@
 package main
 
 import (
-	fizzbuzzsequenceprintergood "tdd/fizzbuzz_sequence_printer_good"
+	"log"
 )
 
 func main(){
-	// printer := fizzbuzzsequenceprinter.FizzBuzzSequencePrinter{}
-	// printer.PrintRange(1, 100)
-	factory := fizzbuzzsequenceprintergood.NewFizzbuzzFactory()
-	printer := factory.Create()
+	// DIコンテナ&オートワイヤリング(対象のクラス群は手動で指定)
+	printer, err := InitializeFizzBuzzPrinter()
+	if err != nil{
+		log.Fatal(err)
+	}
 	printer.PrintRange(1, 100)
 }
+
